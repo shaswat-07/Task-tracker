@@ -10,7 +10,7 @@ connectDB();
 
 const app= express()
 app.use(cors({
-    origin: ['https://task-tracker-eight-theta-21.vercel.app/'],
+    origin: ['https://task-tracker-eight-theta-21.vercel.app'],
     credentials: true
 
 }))

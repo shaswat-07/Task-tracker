@@ -1,0 +1,27 @@
+import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+import cors from 'cors'
+
+import tasksRoutes from './route/tasksRoutes.js';
+import connectDB from './config/db.js';
+connectDB();
+
+
+const app= express()
+app.use(cors({
+    origin: ['http://localhost:5173', 
+    'http://localhost:5174'],
+    credentials: true
+
+}))
+
+
+app.use(express.json())
+
+
+app.use('/api/tasks', tasksRoutes)
+
+app.listen(process.env.PORT || 5000,()=>{
+    console.log(`Server is listening to ${process.env.PORT || 5000}`)
+})
